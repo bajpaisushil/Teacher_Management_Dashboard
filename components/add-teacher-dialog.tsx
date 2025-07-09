@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { X } from "lucide-react"
-import type { Teacher } from "@/types/teacher"
+import type { Teacher, TeacherFormData } from "@/types/teacher"
 
 interface AddTeacherDialogProps {
   open: boolean
@@ -61,7 +61,7 @@ const availableSubjects = [
 ]
 
 export function AddTeacherDialog({ open, onOpenChange, onAdd }: AddTeacherDialogProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<TeacherFormData>({
     name: "",
     email: "",
     phone: "",
