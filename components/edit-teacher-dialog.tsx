@@ -119,7 +119,9 @@ export function EditTeacherDialog({ open, onOpenChange, teacher, onUpdate }: Edi
     }
   }
 
-  const removeSubject = (subject: string) => {
+  const removeSubject = (e: React.MouseEvent, subject: string) => {
+    e.preventDefault()
+    e.stopPropagation()
     setFormData((prev) => ({
       ...prev,
       subjects: prev.subjects.filter((s) => s !== subject),
@@ -258,9 +260,16 @@ export function EditTeacherDialog({ open, onOpenChange, teacher, onUpdate }: Edi
             </div>
             <div className="flex flex-wrap gap-2 mt-2">
               {formData.subjects.map((subject) => (
-                <Badge key={subject} variant="secondary" className="flex items-center gap-1">
-                  {subject}
-                  <X className="h-3 w-3 cursor-pointer" onClick={() => removeSubject(subject)} />
+                <Badge key={subject} variant="secondary" className="flex items-center gap-1 pr-1 text-black">
+                  <span>{subject}</span>
+                  <button
+                    type="button"
+                    onClick={(e) => removeSubject(e, subject)}
+                    className="ml-1 hover:bg-destructive/20 rounded-full p-0.5 transition-colors"
+                    aria-label={`Remove ${subject}`}
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
                 </Badge>
               ))}
             </div>
