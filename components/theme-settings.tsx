@@ -99,7 +99,7 @@ export function ThemeSettings() {
           <SheetDescription>Customize the appearance of your application</SheetDescription>
         </SheetHeader>
 
-        <div className="space-y-6 mt-6">
+        <div className="space-y-6 p-4">
           {/* Theme Mode */}
           <div className="space-y-3">
             <Label className="text-sm font-medium">Theme Mode</Label>
